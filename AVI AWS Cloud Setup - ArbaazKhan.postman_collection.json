@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "15ce34ca-41d3-4044-8429-ea8fb335c041",
+		"name": "AVI AWS Cloud Setup - ArbaazKhan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45736024",
+		"_collection_link": "https://arbaazkhan-128789.postman.co/workspace/VMware-AVI-Testing~7e3c28a0-10dd-4195-bccd-481fbfb062b7/collection/45736024-15ce34ca-41d3-4044-8429-ea8fb335c041?action=share&source=collection_link&creator=45736024"
+	},
+	"item": [
+		{
+			"name": "Login to AVI",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"hiring-2\",\n  \"password\": \"hiring-2\"\n}"
+				},
+				"url": {
+					"raw": "https://35.200.176.139/login",
+					"protocol": "https",
+					"host": [
+						"35",
+						"200",
+						"176",
+						"139"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Dummy AWS Cloud",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "3fe132fb2f24ea4d1a9babe2cb0e1888"
+					},
+					{
+						"key": "Referer",
+						"value": "https://35.200.176.139/"
+					},
+					{
+						"key": "Cookie",
+						"value": "csrftoken=3fe132fb2f24ea4d1a9babe2cb0e1888; sessionid=7114f063332cce65edcf8f2e497506a6"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"aws-cloud-arbaaz-demo\",\n  \"vtype\": \"CLOUD_AWS\",\n  \"vcenter_configuration\": null,\n  \"config\": {\n    \"access_key_id\": \"dummyAccessKey\",\n    \"secret_access_key\": {\n      \"secret_value\": \"dummySecret\"\n    },\n    \"region\": \"us-west-2\",\n    \"vpc_id\": \"vpc-12345678\"\n  }\n}"
+				},
+				"url": {
+					"raw": "https://35.200.176.139/api/cloud",
+					"protocol": "https",
+					"host": [
+						"35",
+						"200",
+						"176",
+						"139"
+					],
+					"path": [
+						"api",
+						"cloud"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Cloud Status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-CSRFToken",
+						"value": "3fe132fb2f24ea4d1a9babe2cb0e1888"
+					},
+					{
+						"key": "Referer",
+						"value": "https://35.200.176.139/"
+					},
+					{
+						"key": "Cookie",
+						"value": "csrftoken=3fe132fb2f24ea4d1a9babe2cb0e1888; sessionid=7114f063332cce65edcf8f2e497506a6"
+					}
+				],
+				"url": {
+					"raw": "https://35.200.176.139/api/cloud",
+					"protocol": "https",
+					"host": [
+						"35",
+						"200",
+						"176",
+						"139"
+					],
+					"path": [
+						"api",
+						"cloud"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
